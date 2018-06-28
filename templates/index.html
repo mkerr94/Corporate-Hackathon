@@ -1,74 +1,62 @@
 {% extends "layout/base.html" %}
-<html>
-  <head>
-    <link rel='stylesheet' type='text/css' href='../static/index.css'>
-    <link rel="stylesheet" href="https://fonts.google.com/specimen/Roboto?selection.family=Roboto"/>
+{% block header %}
+  <link rel='stylesheet' type='text/css' href='../../static/posts.css'>
+{% endblock %}
 
-  </head>
-  <body>
-    <div class='web-container'>
-      <div class='header'></div>
+{% block posts %}
+  <div class='posts'>
+    <!-- For each post in POSTS -->
+    <div class="post-container">
+      <!-- post.title -->
+      <p class="post-title">Two Factor Authentication Remote Access</p>
+      <!-- post.author -->
+      <h4 class="post-author">@Author</h4>
+      <!-- post.description -->
+      <p class="post-description">3 wolf moon chambray literally leggings twee af. Semiotics microdosing chia lo-fi quinoa activated charcoal austin williamsburg helvetica retro asymmetrical offal kombucha mlkshk. Typewriter truffaut keytar narwhal neutra flannel pour-over. Tilde tumblr vinyl pinterest actually, occupy YOLO activated charcoal sartorial. Raclette hell of squid blog, put a bird on it scenester kickstarter bespoke adaptogen.</p>
+      <!-- voting arrows -->
+      <img class="post-upvote-arrow" src="../static/images/up_arrow.svg" alt="upvote arrow">
+      <img class="post-downvote-arrow" src="../static/images/down_arrow.svg" alt="downvote arrow">
+      <!-- post.votes -->
+      <span class="post-votes">278 votes</span>
+      <p class="post-view"><a href="post.html">View</a></p>
+    </div> <!-- post-container -->
 
+    <hr class="divider">
 
-      <div class='posts'>
-        <!-- For each post in POSTS -->
-        <div class="post-container">
-          <!-- post.title -->
-          <p class="post-title">Two Factor Authentication Remote Access</p>
-          <!-- post.author -->
-          <h4 class="post-author">@Author</h4>
-          <!-- post.description -->
-          <p class="post-description">3 wolf moon chambray literally leggings twee af. Semiotics microdosing chia lo-fi quinoa activated charcoal austin williamsburg helvetica retro asymmetrical offal kombucha mlkshk. Typewriter truffaut keytar narwhal neutra flannel pour-over. Tilde tumblr vinyl pinterest actually, occupy YOLO activated charcoal sartorial. Raclette hell of squid blog, put a bird on it scenester kickstarter bespoke adaptogen.</p>
-          <!-- voting arrows -->
-          <img class="post-upvote-arrow" src="../static/images/up_arrow.svg" alt="upvote arrow">
-          <img class="post-downvote-arrow" src="../static/images/down_arrow.svg" alt="downvote arrow">
-          <!-- post.votes -->
-          <span class="post-votes">278 votes</span>
-          <p class="post-view"><a href="post.html">View</a></p>
-        </div> <!-- post-container -->
+    <div class="post-container">
+      <!-- post.title -->
+      <p class="post-title">Improve API Documentation</p>
+      <!-- post.author -->
+      <h4 class="post-author">@Author</h4>
+      <!-- post.description -->
+      <p class="post-description">3 wolf moon chambray literally leggings twee af. Semiotics microdosing chia lo-fi quinoa activated charcoal austin williamsburg helvetica retro asymmetrical offal kombucha mlkshk. Typewriter truffaut keytar narwhal neutra flannel pour-over. Tilde tumblr vinyl pinterest actually, occupy YOLO activated charcoal sartorial. Raclette hell of squid blog, put a bird on it scenester kickstarter bespoke adaptogen.</p>
+      <!-- voting arrows -->
+      <img class="post-upvote-arrow" src="../static/images/up_arrow.svg" alt="upvote arrow">
+      <img class="post-downvote-arrow" src="../static/images/down_arrow.svg" alt="downvote arrow">
+      <!-- post.votes -->
+      <span class="post-votes">24</span>
+      <p class="post-view"><a href="post.html">View</a></p>
+    </div> <!-- post-container -->
 
-        <hr class="divider">
+    <hr class="divider">
 
-        <div class="post-container">
-          <!-- post.title -->
-          <p class="post-title">Improve API Documentation</p>
-          <!-- post.author -->
-          <h4 class="post-author">@Author</h4>
-          <!-- post.description -->
-          <p class="post-description">3 wolf moon chambray literally leggings twee af. Semiotics microdosing chia lo-fi quinoa activated charcoal austin williamsburg helvetica retro asymmetrical offal kombucha mlkshk. Typewriter truffaut keytar narwhal neutra flannel pour-over. Tilde tumblr vinyl pinterest actually, occupy YOLO activated charcoal sartorial. Raclette hell of squid blog, put a bird on it scenester kickstarter bespoke adaptogen.</p>
-          <!-- voting arrows -->
-          <img class="post-upvote-arrow" src="../static/images/up_arrow.svg" alt="upvote arrow">
-          <img class="post-downvote-arrow" src="../static/images/down_arrow.svg" alt="downvote arrow">
-          <!-- post.votes -->
-          <span class="post-votes">24</span>
-          <p class="post-view"><a href="post.html">View</a></p>
-        </div> <!-- post-container -->
+    <div class="post-container">
+      <!-- post.title -->
+      <p class="post-title">Add Search Bar</p>
+      <!-- post.author -->
+      <h4 class="post-author">@Author</h4>
+      <!-- post.description -->
+      <p class="post-description">3 wolf moon chambray literally leggings twee af. Semiotics microdosing chia lo-fi quinoa activated charcoal austin williamsburg helvetica retro asymmetrical offal kombucha mlkshk. Typewriter truffaut keytar narwhal neutra flannel pour-over. Tilde tumblr vinyl pinterest actually, occupy YOLO activated charcoal sartorial. Raclette hell of squid blog, put a bird on it scenester kickstarter bespoke adaptogen.</p>
+      <!-- voting arrows -->
+      <img class="post-upvote-arrow" src="../static/images/up_arrow.svg" alt="upvote arrow">
+      <img class="post-downvote-arrow" src="../static/images/down_arrow.svg" alt="downvote arrow">
+      <!-- post.votes -->
+      <span class="post-votes">-14</span>
+      <p class="post-view"><a href="post.html">View</a></p>
+    </div> <!-- post-container -->
 
-        <hr class="divider">
+    <hr class="divider">
 
-        <div class="post-container">
-          <!-- post.title -->
-          <p class="post-title">Add Search Bar</p>
-          <!-- post.author -->
-          <h4 class="post-author">@Author</h4>
-          <!-- post.description -->
-          <p class="post-description">3 wolf moon chambray literally leggings twee af. Semiotics microdosing chia lo-fi quinoa activated charcoal austin williamsburg helvetica retro asymmetrical offal kombucha mlkshk. Typewriter truffaut keytar narwhal neutra flannel pour-over. Tilde tumblr vinyl pinterest actually, occupy YOLO activated charcoal sartorial. Raclette hell of squid blog, put a bird on it scenester kickstarter bespoke adaptogen.</p>
-          <!-- voting arrows -->
-          <img class="post-upvote-arrow" src="../static/images/up_arrow.svg" alt="upvote arrow">
-          <img class="post-downvote-arrow" src="../static/images/down_arrow.svg" alt="downvote arrow">
-          <!-- post.votes -->
-          <span class="post-votes">-14</span>
-          <p class="post-view"><a href="post.html">View</a></p>
-        </div> <!-- post-container -->
+  </div> <!-- posts -->
 
-        <hr class="divider">
-
-      </div> <!-- posts -->
-
-      <div class='footer'>
-
-      </div>
-
-    </div>
-  </body>
-</html>
+{% endblock %}

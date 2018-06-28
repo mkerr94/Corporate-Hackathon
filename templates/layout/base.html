@@ -2,6 +2,7 @@
   <head>
     <link rel='stylesheet' type='text/css' href='../../static/base.css'>
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+    {% block header %}{% endblock %}
   </head>
   <body>
     <div class='web-container'>
@@ -14,7 +15,7 @@
 
       <div class='posts'>
         <input class='search' type='text' name='search' placeholder='Search for ideas...'>
-        <p>{% block posts %}{% endblock %}</p>
+        {% block posts %}{% endblock %}
       </div>
 
 
