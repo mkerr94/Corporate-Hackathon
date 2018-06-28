@@ -1,8 +1,8 @@
 {% extends "layout/base.html" %}
 {% block header %}
-  <link rel='stylesheet' type='text/css' href={{ url_for('static', filename='css/post.css') }}>
+  <link rel='stylesheet' type='text/css' href='../../static/post.css'>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src={{ url_for('static', filename='js/like.js') }}></script>
+  <script src='../static/js/like.js'></script>
 {% endblock %}
 
 {% block content %}
@@ -13,7 +13,7 @@
     <input class='search' type='text' name='search' placeholder='Search for ideas...'>
 
     <!-- For each post in POSTS -->
-    <div class="post-container" id="1">
+    <div class="post-container">
       <!-- post.title -->
       <p class="post-title">Two Factor Authentication Remote Access</p>
       <!-- post.author -->
@@ -30,7 +30,7 @@
 
     <hr class="divider">
 
-    <div class="post-container" id="3">
+    <div class="post-container">
       <!-- post.title -->
       <p class="post-title">Improve API Documentation</p>
       <!-- post.author -->
@@ -47,7 +47,7 @@
 
     <hr class="divider">
 
-    <div class="post-container" id="2">
+    <div class="post-container">
       <!-- post.title -->
       <p class="post-title">Add Search Bar</p>
       <!-- post.author -->
