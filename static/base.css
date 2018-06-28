@@ -54,7 +54,7 @@ body {
 .search {
     width: 50%;
 
-    background-image: url('image/magnify.svg');
+    background-image: url('images/magnify.svg');
     background-repeat: no-repeat;
     background-position-x: 4px;
     background-position-y: 2px;
