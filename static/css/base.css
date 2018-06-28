@@ -1,3 +1,8 @@
+:root {
+    --main-bg-color: #759eb8;
+    --border-radius: 8px;
+}
+
 body {
     margin: 0px;
 
@@ -19,7 +24,7 @@ body {
     grid-column: 1 / 5;
     grid-row: 1;
 
-    background-color: #D42F2F;
+    background-color: var(--main-bg-color);
 }
 
 .logo {
@@ -46,7 +51,6 @@ body {
     grid-area: content;
 
     width: 100%;
-    margin: 4px;
 }
 
 /* Footer */
@@ -61,11 +65,12 @@ body {
 
 .rule {
     width: 100%;
-    height: 1px;
-
-    color: black;
-    background-color: black;
     border: 0;
+    height: 1px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    background: #000;
+    opacity: 0.4;
 }
 
 
