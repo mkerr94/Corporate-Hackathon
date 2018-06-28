@@ -8,3 +8,7 @@ app = Flask(__name__)
 def index():
     user = {'username': 'Test User'}
     return render_template('index.html', title='Home', user=user)
+
+@app.route('/post')
+def post():
+    return render_template('post.html', title='Post')
