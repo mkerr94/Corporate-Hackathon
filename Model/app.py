@@ -2,8 +2,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
 from flask import render_template, request, redirect
 import datetime
-from Model.post import Post
-from Model.vote import Vote
+from post import Post
+from vote import Vote
 
 
 app = Flask(__name__)
