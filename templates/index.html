@@ -8,7 +8,7 @@
 {% block content %}
 
 
-  <div class='posts'>
+  <div class='content'>
 
     <input class='search' type='text' name='search' placeholder='Search for ideas...'>
 
@@ -26,11 +26,13 @@
       <!-- post.votes -->
       <span class="post-votes">278 votes</span>
       <p class="post-view"><a href='{{ url_for('post') }}'>View</a></p>
+      <form method="GET" style='visibility:hidden' class='comment-form'>
+        <input type="text" placeholder="Please enter a comment here" id='comment'></input>
+        <input type="submit" value="Submit"></input>
+      </form>
     </div> <!-- post-container -->
 
-    <hr class="divider">
-
-    <div class="post-container">
+    <div class="post-container" id="3">
       <!-- post.title -->
       <p class="post-title">Improve API Documentation</p>
       <!-- post.author -->
@@ -43,11 +45,14 @@
       <!-- post.votes -->
       <span class="post-votes">24</span>
       <p class="post-view"><a href="post.html">View</a></p>
+      <form method="GET" style='visibility:hidden' class='comment-form'>
+        <input type="text" placeholder="Please enter a comment here" id='comment'></input>
+        <input type="submit" value="Submit"></input>
+      </form>
     </div> <!-- post-container -->
 
     <hr class="divider">
-
-    <div class="post-container">
+    <div class="post-container" id="2">
       <!-- post.title -->
       <p class="post-title">Add Search Bar</p>
       <!-- post.author -->
@@ -60,10 +65,20 @@
       <!-- post.votes -->
       <span class="post-votes">-14</span>
       <p class="post-view"><a href="post.html">View</a></p>
+      <form method="GET" style='visibility:hidden' class='comment-form'>
+        <input type="text" placeholder="Please enter a comment here" id='comment'></input>
+        <input type="submit" value="Submit"></input>
+      </form>
     </div> <!-- post-container -->
 
-    <hr class="divider">
-
   </div> <!-- posts -->
+
+
+
+  <div class='categories'>
+
+
+
+  </div> <!-- categories -->
 
 {% endblock %}
