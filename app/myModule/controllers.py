@@ -11,7 +11,7 @@ def index():
     user = {'username': 'Test User'}
     posts = Post.query.order_by(Post.upvotes - Post.downvotes).all()
     # print("---------------" +str(posts))
-    return render_template('index.html', title='Home', user=user, posts=posts)
+    return render_template('index.html.js', title='Home', user=user, posts=posts)
 
 @myModule.route('/post')
 def post():
