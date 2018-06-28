@@ -1,6 +1,7 @@
 <html>
   <head>
-    <link rel='stylesheet' type='text/css' href='../../static/index.css'>
+    <link rel='stylesheet' type='text/css' href='../../static/base.css'>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
   </head>
   <body>
     <div class='web-container'>
@@ -9,16 +10,17 @@
 
       <img class='logo' src='../../static/image/logo.png'>
 
-      <div class='login'>
-        <p>Welcome, []</p>
-      </div>
+      <p class='login'>Welcome, {% block username %}{% endblock %}</p>
 
       <div class='posts'>
-        {% block posts %}{% endblock %}
+        <input class='search' type='text' name='search' placeholder='Search for ideas...'>
+        <p>{% block posts %}{% endblock %}</p>
       </div>
 
+
       <div class='footer'>
-        
+        <hr class='rule'/>
+        A webapp for a hackathon. Created by Ivan, Corina, Tatsuya, Cristian, Mark, Anais, and Marc.
       </div>
 
     </div>
