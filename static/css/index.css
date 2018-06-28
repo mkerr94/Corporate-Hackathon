@@ -28,7 +28,6 @@
 
 .post-container{
     min-width: 300px;
-
     margin: auto;
     margin-bottom: 10px;
     border-radius: var(--border-radius);
@@ -75,16 +74,16 @@
     justify-self: center;
 
     width: 80%;
-    height: 80vh;    
+    height: 80vh;
     margin-top: 10px;
-    
+
     position: -webkit-sticky; /* Safari */
     position: sticky;
     top: 10px;
 
     border: 1px solid var(--main-bg-color);;
     border-radius: var(--border-radius);
-
+    
     z-index: 1;
 }
 
