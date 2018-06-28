@@ -1,14 +1,24 @@
 <html>
-    <head>
-        {% if user %}
-        <title>{{ user }} page</title>
-        {% else %}
-        <title>You are not logged in</title>
-        {% endif %}
-    </head>
-    <body>
-        {% if user %}
-        <h1>Hello, {{ user.username }}!</h1>
-        {% endif %}
-    </body>
+  <head>
+    <link rel='stylesheet' type='text/css' href='../static/index.css'>
+  </head>
+  <body>
+    <div class='web-container'>
+      
+      <div class='header'></div>
+
+      <div class='login'>
+        <p>Welcome, []</p>
+      </div>
+
+      <div class='posts'>
+        <!-- Individual post -->
+      </div>
+
+      <div class='footer'>
+
+      </div>
+
+    </div>
+  </body>
 </html>
