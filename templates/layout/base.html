@@ -9,15 +9,11 @@
       
       <div class='header'></div>
 
-      <img class='logo' src='../../static/image/logo.png'>
+      <img class='logo' src='../../static/images/logo.png'>
 
       <p class='login'>Welcome, {% block username %}{% endblock %}</p>
 
-      <div class='posts'>
-        <input class='search' type='text' name='search' placeholder='Search for ideas...'>
-        {% block posts %}{% endblock %}
-      </div>
-
+      {% block posts %}{% endblock %}
 
       <div class='footer'>
         <hr class='rule'/>
