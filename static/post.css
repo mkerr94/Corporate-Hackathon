@@ -13,14 +13,16 @@
 
     background-image: url('images/magnify.svg');
     background-repeat: no-repeat;
-    background-position-x: 4px;
-    background-position-y: 2px;
+    background-size: auto;
+    background-position-x:4%;
+    background-position-y: 50%;
     border: 1px solid #ccc;;
     border-radius: 20px;
-    padding: 2px;
-    padding-left: 30px;
-
-    font-size: 16px;
+    padding: 1%;
+    padding-left: 7%;
+    margin-bottom: 3%;
+    margin-left: 25%;
+    font-size: 1em;
 }
 
 .post-container{
@@ -63,4 +65,3 @@
     font-size: 0.8em;
     color: #D42F2F;
 }
-  

@@ -26,9 +26,7 @@ body {
     grid-area: logo;
     justify-self: center;
     align-self: end;
-
-    width: 60%;
-    height: auto;
+    width: 60%;;
 }
 
 .login {
@@ -42,12 +40,11 @@ body {
 /* Main content */
 .posts {
     grid-area: posts;
-    justify-self: center;
 
     width: 100%;
     margin-top: 10px;
 
-    text-align: center;
+
     padding: 5%;
 }
 
