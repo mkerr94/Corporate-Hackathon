@@ -1,8 +1,8 @@
 {% extends "layout/base.html" %}
 {% block header %}
-  <link rel='stylesheet' type='text/css' href='../../static/post.css'>
+  <link rel='stylesheet' type='text/css' href={{ url_for('static', filename='css/index.css') }}>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src='../static/js/like.js'></script>
+  <script src={{ url_for('static', filename='js/like.js') }}></script>
 {% endblock %}
 
 {% block content %}
@@ -21,8 +21,8 @@
       <!-- post.description -->
       <p class="post-description">3 wolf moon chambray literally leggings twee af. Semiotics microdosing chia lo-fi quinoa activated charcoal austin williamsburg helvetica retro asymmetrical offal kombucha mlkshk. Typewriter truffaut keytar narwhal neutra flannel pour-over. Tilde tumblr vinyl pinterest actually, occupy YOLO activated charcoal sartorial. Raclette hell of squid blog, put a bird on it scenester kickstarter bespoke adaptogen.</p>
       <!-- voting arrows -->
-      <img class="post-upvote-arrow" src="../static/images/up_arrow.svg" alt="upvote arrow">
-      <img class="post-downvote-arrow" src="../static/images/down_arrow.svg" alt="downvote arrow">
+      <img class="post-upvote-arrow" src={{ url_for('static', filename='images/up_arrow.svg') }} alt="upvote arrow">
+      <img class="post-downvote-arrow" src={{ url_for('static', filename='images/down_arrow.svg') }} alt="downvote arrow">
       <!-- post.votes -->
       <span class="post-votes">278 votes</span>
       <p class="post-view"><a href='{{ url_for('post') }}'>View</a></p>
