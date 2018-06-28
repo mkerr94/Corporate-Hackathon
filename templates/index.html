@@ -1,0 +1,14 @@
+<html>
+    <head>
+        {% if user %}
+        <title>{{ user }} page</title>
+        {% else %}
+        <title>You are not logged in</title>
+        {% endif %}
+    </head>
+    <body>
+        {% if user %}
+        <h1>Hello, {{ user.username }}!</h1>
+        {% endif %}
+    </body>
+</html>
