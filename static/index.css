@@ -1,0 +1,30 @@
+body {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.web-container {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+     ". . . login"
+     ". posts posts ."
+     "footer footer footer footer";
+}
+
+.header {
+    grid-column: 1 / 5;
+    grid-row: 1;
+
+    background-color: #99AA25;
+}
+
+.login {
+    grid-area: login;
+}
+
+.posts {
+    grid-area: posts
+}
