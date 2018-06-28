@@ -1,4 +1,6 @@
-from app import db
+from Model.app import db
+
+
 
 class Post(db.Model):
     __tablename__ = 'post'
@@ -7,9 +9,9 @@ class Post(db.Model):
     timestamp = db.Column(db.Date())
     title = db.Column(db.String(500))
     description = db.Column(db.String(1000), unique = True)
-    votes_number = db.Column(db.Integer)
-
+    upvotes = db.Column(db.Integer)
+    downvotes = db.Column(db.Integer)
 
     def __repr__(self):
-        return '<Post id = {}, timestamp = {}, title = {}, description = {}, votes_number={}>'\
-            .format(self.id, self.timestamp, self.title, self.description, self.votes_number)
+        return '<Post id = {}, timestamp = {}, title = {}, description = {}, upvotes={}, downvotes = {}>'\
+            .format(self.id, self.timestamp, self.title, self.description, self.upvotes, self.downvotes)
