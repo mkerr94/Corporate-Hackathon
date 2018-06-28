@@ -1,4 +1,4 @@
-from Model.app import db
+from app import db
 
 class Vote(db.Model):
     __tablename__ = 'vote'
