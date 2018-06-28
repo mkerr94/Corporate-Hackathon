@@ -10,7 +10,7 @@ body {
     grid-template-rows: auto;
     grid-template-areas:
      ". logo logo login"
-     ". posts posts ."
+     ". content content ."
      "footer footer footer footer";
 }
 
@@ -26,7 +26,7 @@ body {
     grid-area: logo;
     justify-self: center;
     align-self: end;
-    width: 60%;;
+    width: 60%;
 }
 
 .login {
@@ -39,13 +39,10 @@ body {
 
 /* Main content */
 .posts {
-    grid-area: posts;
+    grid-area: content;
 
     width: 100%;
     margin-top: 10px;
-
-
-    padding: 5%;
 }
 
 /* Footer */
