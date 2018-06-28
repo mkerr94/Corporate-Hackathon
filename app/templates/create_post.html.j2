@@ -7,4 +7,17 @@
 
 {% block content %}
 
+<div class='content'>
+  <form action='createPost' method='post'>
+
+    Title:<br>
+    <input type="text" name="title"><br>
+    Category:<br>
+    <input type="text" name="category"><br>
+    Description:<br>
+    <textarea cols="40" rows="5" name='description'></textarea><br>
+    <input type=submit text='Submit'>
+  </form>
+</div>
+
 {% endblock %}

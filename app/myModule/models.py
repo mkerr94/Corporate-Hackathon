@@ -6,7 +6,7 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     timestamp = db.Column(db.Date())
     title = db.Column(db.String(500))
-    description = db.Column(db.String(1000), unique = True)
+    description = db.Column(db.String(1000))
     upvotes = db.Column(db.Integer)
     downvotes = db.Column(db.Integer)
 
@@ -18,7 +18,7 @@ class Vote(db.Model):
     __tablename__ = 'vote'
 
     id = db.Column(db.Integer, primary_key = True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user_id = db.Column(db.Integer)
     post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
     text = db.Column(db.String(1000))
 

@@ -11,11 +11,16 @@ def index():
     user = {'username': 'Test User'}
     posts = Post.query.order_by(Post.upvotes - Post.downvotes).all()
     # print("---------------" +str(posts))
-    return render_template('index.html.js', title='Home', user=user, posts=posts)
+    return render_template('index.html.j2', title='Home', user=user, posts=posts)
 
 @myModule.route('/post')
 def post():
-    return render_template('post.html')
+    return render_template('post.html.j2')
+
+
+@myModule.route('/create')
+def create():
+    return render_template('create_post.html.j2')
 
 @myModule.route('/searchPost')
 def searchPost():
@@ -67,7 +72,7 @@ def createPost():
                 upvotes=0,
                 downvotes=0)
     addToDB(post)
-    return redirect(url_for('index'))
+    return redirect(url_for('.index'))
 
 @myModule.route('/postComment', methods = ['POST'])
 def postComment():
@@ -75,7 +80,7 @@ def postComment():
                 post_id=request.form['post_id'],
                 vote=request.form['text'])
     addToDB(comment)
-    return redirect(url_for('index'))
+    return redirect(url_for('.index'))
 
 @myModule.route('/vote', methods = ['POST'])
 def vote():

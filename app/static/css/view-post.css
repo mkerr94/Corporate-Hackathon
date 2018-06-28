@@ -10,12 +10,12 @@
   padding-top: 5%;
   font-size: 2em;
   border-top: 1px solid var(--main-bg-color);
-  font-family: Roboto-Light;
+  font-family: 'Roboto';
 
 }
 
 .post-author{
-  font-family: Roboto-Light;
+  font-family: 'Roboto';
   color: grey;
 }
 
@@ -50,13 +50,13 @@
 }
 
 .comment-author{
-  font-family: Roboto-Light;
+  font-family: 'Roboto';
   color: grey;
   font-size: 0.7em;
 }
 
 .comment-timestamp{
-  font-family: Roboto-Light;
+  font-family: 'Roboto';
   color: grey;
   font-size: 0.7em;
 }
