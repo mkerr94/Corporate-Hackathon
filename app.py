@@ -7,8 +7,12 @@ app = Flask(__name__)
 @app.route('/index')
 def index():
     user = {'username': 'Test User'}
-    return render_template('index.html', title='Home', user=user)
+    return render_template('index.html.j2', title='Home', user=user)
 
 @app.route('/post')
 def post():
-    return render_template('post.html', title='Post')
+    return render_template('post.html.j2', title='Post')
+
+@app.route('/create')
+def create_post():
+    return render_template('create_post.html.j2', title='Create')
