@@ -14,13 +14,14 @@
     background-image: url('../images/magnify.svg');
     background-repeat: no-repeat;
     background-size: auto;
-    background-position-x: 4%;
+    background-position-x: 10px;
     background-position-y: 50%;
     border: 1px solid #ccc;;
     border-radius: 999px;
-    padding: 1%;
-    padding-left: 7%;
-    margin-bottom: 3%;
+    padding: 10px;
+    padding-left: 40px;
+    margin-bottom: 1%;
+    margin-top: 1%;
 
     font-size: 1em;
 }
@@ -32,6 +33,7 @@
     border-radius: 8px;
     border: 1px solid;
     border-color: #D42F2F;
+    padding: 10px;
 }
 
 .post-title{
@@ -63,4 +65,23 @@
     font-family: Roboto-Light;
     font-size: 0.8em;
     color: #D42F2F;
+}
+
+
+
+.categories {
+    grid-area: aside;
+    justify-self: center;
+
+    width: 80%;
+    height: 80vh;    
+    margin-top: 10px;
+    
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 10px;
+
+    border: 1px solid;
+    border-radius: 4px;
+
 }
