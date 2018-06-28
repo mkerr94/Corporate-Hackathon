@@ -5,7 +5,7 @@
   <script src='../static/js/like.js'></script>
 {% endblock %}
 
-{% block posts %}
+{% block content %}
 
 
   <div class='posts'>
@@ -25,7 +25,7 @@
       <img class="post-downvote-arrow" src="../static/images/down_arrow.svg" alt="downvote arrow">
       <!-- post.votes -->
       <span class="post-votes">278 votes</span>
-      <p class="post-view"><a href="post.html">View</a></p>
+      <p class="post-view"><a href='{{ url_for('post') }}'>View</a></p>
     </div> <!-- post-container -->
 
     <hr class="divider">
