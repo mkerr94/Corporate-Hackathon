@@ -103,6 +103,7 @@
     padding: 0px;
 
     cursor: pointer;
+    visibility: hidden;
 }
 
 @media screen and (max-width: 800px) {
@@ -120,5 +121,6 @@
         border-radius: 0px;
 
         transition: 0.4s;
+        visibility: visible;
     }
 }

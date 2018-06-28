@@ -4,18 +4,21 @@ from app.myModule.models import Comment, Vote, Post, Category
 from app import db
 
 myModule = Blueprint('myModule', __name__)
+user = {'username': 'Test User'}
 
 @myModule.route('/')
 @myModule.route('/index')
 def index():
-    user = {'username': 'Test User'}
     posts = Post.query.order_by(Post.upvotes - Post.downvotes).all()
+    categories = Category.query.order_by(Category.id).limit(10).all()
     # print("---------------" +str(posts))
-    return render_template('index.html.j2', title='Home', user=user, posts=posts)
+    return render_template('index.html.j2', title='Home', user=user, posts=posts, categories=categories)
 
 @myModule.route('/post')
 def post():
-    return render_template('post.html.j2')
+    id = request.args.get('id')
+    post = Post.query.filter_by(id=id).first()
+    return render_template('post.html.j2', post=post)
 
 
 @myModule.route('/create')
@@ -32,10 +35,10 @@ def searchPost():
             .replace('?', '_')
     else:
         looking_for = '%{0}%'.format(keyword)
-    posts += Post.query.filter_by(Post.title.ilike(looking_for)).all()
-    posts += Post.query.filter_by(Post.description.ilike(looking_for)).all()
+    posts += Post.query.filter(Post.title.ilike(looking_for)).all()
+    posts += Post.query.filter(Post.description.ilike(looking_for)).all()
     posts = set(posts)
-    return posts
+    return render_template('index.html.j2', title='Home', user=user, posts=posts)
 
 @myModule.route('/searchCategory')
 def searchCategory():
@@ -46,7 +49,7 @@ def searchCategory():
             .replace('?', '_')
     else:
         looking_for = '%{0}%'.format(keyword)
-    categories = Post.query.filter_by(Post.title.ilike(looking_for)).all()
+    categories = Post.query.filter(Post.title.ilike(looking_for)).all()
     return categories
 
 @myModule.route('/searchByCategory')
