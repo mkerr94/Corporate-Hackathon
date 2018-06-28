@@ -1,5 +1,5 @@
 .divider{
-    width: 30vw;
+    width: 50%;
     border: 0;
     height: 1px;
     margin-top: 2%;
@@ -9,7 +9,7 @@
 }
 
 .search {
-    width: 50%;
+    width: 100%;
 
     background-image: url('../images/magnify.svg');
     background-repeat: no-repeat;
@@ -21,7 +21,6 @@
     padding: 1%;
     padding-left: 7%;
     margin-bottom: 3%;
-    margin-left: 25%;
 
     font-size: 1em;
 }

@@ -9,7 +9,7 @@
 
       <div class='header'></div>
 
-      <img class='logo' src='../../static/images/logo.png'>
+      <img class='logo' src={{ url_for('static', filename='images/logo.png') }}>
 
       <p class='login'>Welcome, {% block username %}{% endblock %}</p>
 
