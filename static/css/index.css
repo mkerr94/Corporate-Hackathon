@@ -83,14 +83,32 @@
 
     border: 1px solid var(--main-bg-color);;
     border-radius: var(--border-radius);
-    
+
     z-index: 1;
+}
+
+.show-button {
+    width: 20px;
+    height: 50px;
+
+    position: absolute;
+    top: calc(50% - 25px);
+
+    background-image: url('../images/chevron-left.svg');
+    background-color: transparent;
+    background-position: 0px 14px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: none;
+    padding: 0px;
+
+    cursor: pointer;
 }
 
 @media screen and (max-width: 800px) {
     .categories {
-        max-width: 200px;
-        height: 101%;
+        max-width: 23px;
+        height: 10%;
         margin: 0px;
 
         position: fixed;
@@ -99,9 +117,6 @@
         transform: translateY(-50%);
 
         background-color: white;
-        background-image: url('../images/chevron-left.svg');
-        background-repeat: no-repeat;
-        background-position-y: 50%;
         border-radius: 0px;
 
         transition: 0.4s;
