@@ -4,11 +4,10 @@ body {
 
 .web-container {
     display: grid;
-
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: auto;
     grid-template-areas:
-     ". . . login"
+     ". logo logo login"
      ". posts posts ."
      "footer footer footer footer";
 }
@@ -17,13 +16,20 @@ body {
     grid-column: 1 / 5;
     grid-row: 1;
 
-    background-color: #99AA25;
+    background-color: #b3c5d7;
+}
+
+.logo {
+    grid-area: logo;
+    justify-self: center;
 }
 
 .login {
     grid-area: login;
+    justify-self: center;
 }
 
 .posts {
-    grid-area: posts
+    grid-area: posts;
+    justify-self: center;
 }
