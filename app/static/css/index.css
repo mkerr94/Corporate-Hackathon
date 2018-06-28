@@ -28,7 +28,6 @@
 
 .post-container{
     min-width: 300px;
-
     margin: auto;
     margin-bottom: 10px;
     border-radius: var(--border-radius);
@@ -75,9 +74,9 @@
     justify-self: center;
 
     width: 80%;
-    height: 80vh;    
+    height: 80vh;
     margin-top: 10px;
-    
+
     position: -webkit-sticky; /* Safari */
     position: sticky;
     top: 10px;
@@ -85,4 +84,41 @@
     border: 1px solid var(--main-bg-color);;
     border-radius: var(--border-radius);
 
+    z-index: 1;
+}
+
+.show-button {
+    width: 20px;
+    height: 50px;
+
+    position: absolute;
+    top: calc(50% - 25px);
+
+    background-image: url('../images/chevron-left.svg');
+    background-color: transparent;
+    background-position: 0px 14px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: none;
+    padding: 0px;
+
+    cursor: pointer;
+}
+
+@media screen and (max-width: 800px) {
+    .categories {
+        max-width: 23px;
+        height: 10%;
+        margin: 0px;
+
+        position: fixed;
+        top: 50%;
+        right: -1;
+        transform: translateY(-50%);
+
+        background-color: white;
+        border-radius: 0px;
+
+        transition: 0.4s;
+    }
 }

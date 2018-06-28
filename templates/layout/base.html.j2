@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel='stylesheet' type='text/css' href={{ url_for('static', filename='css/base.css') }}>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+    {% block header %}{% endblock %}
+  </head>
+  <body>
+    <div class='web-container'>
+
+      <div class='header'></div>
+
+      <img class='logo' src={{ url_for('static', filename='images/logo.png') }}>
+
+      <p class='login'>Welcome, {% block username %}{% endblock %}</p>
+
+      {% block content %}{% endblock %}
+
+      <div class='footer'>
+        <hr class='rule'/>
+        A webapp for a hackathon. Created by Ivan, Corina, Tatsuya, Cristian, Mark, Anais, and Marc.
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,46 @@
+{% extends "layout/base.html.j2" %}
+
+{% block header %}
+  <link rel='stylesheet' type='text/css' href='../../static/css/view-post.css'>
+  <script src='../static/js/like.js'></script>
+{% endblock %}
+
+{% block content %}
+<div class="wrapper">
+  <div class="post-container">
+    <!-- post.title -->
+    <p class="post-title">Two Factor Authentication Remote Access</p>
+
+    <!-- post.author.name -->
+    <p class="post-author">@JPM Employee 59821</p>
+
+    <!-- post.description -->
+    <p class="post-description">Tacos chillwave XOXO flannel tote bag wolf. Copper mug waistcoat selfies celiac truffaut marfa semiotics try-hard palo santo meh kinfolk. Swag deep v gochujang fam activated charcoal polaroid readymade yuccie venmo vegan schlitz. Narwhal crucifix drinking vinegar bushwick banjo.</p>
+
+    <p class="post-score">Score: 430</p>
+    <img class="post-upvote-arrow" src="../static/images/up_arrow.svg" alt="upvote arrow">: 540
+    <br>
+    <img class="post-downvote-arrow" src="../static/images/down_arrow.svg" alt="downvote arrow">: 110
+  </div>
+
+<br>
+
+  <div class="comments">
+    <p class="comments-header">Comments</p>
+    <!-- foreach post.comments -->
+    <div class="comments-container">
+      <p class="comment-text">this is a comment</p>
+      <span class="comment-author">N694821 |</span>  <span class="comment-timestamp">12:04pm</span>
+    </div>
+    <div class="comments-container">
+      <p class="comment-text">this is a comment</p>
+      <span class="comment-author">N739831 |</span>  <span class="comment-timestamp">06:44pm</span>
+    </div>
+    <div class="comments-container">
+      <p class="comment-text">this is a comment</p>
+      <span class="comment-author">P409403 |</span>  <span class="comment-timestamp">09:00am</span>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
