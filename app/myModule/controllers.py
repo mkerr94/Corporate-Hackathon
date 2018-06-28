@@ -3,14 +3,19 @@ import datetime
 from app.myModule.models import Comment, Vote, Post, Category
 from app import db
 
-myModule = Blueprint('myModule', __name__, url_prefix='/myModule')
+myModule = Blueprint('myModule', __name__)
 
 @myModule.route('/')
 @myModule.route('/index')
 def index():
     user = {'username': 'Test User'}
     posts = Post.query.order_by(Post.upvotes - Post.downvotes).all()
+    # print("---------------" +str(posts))
     return render_template('index.html', title='Home', user=user, posts=posts)
+
+@myModule.route('/post')
+def post():
+    return render_template('post.html')
 
 @myModule.route('/searchPost')
 def searchPost():
@@ -85,6 +90,6 @@ def vote():
     addToDB(vote)
 
 
-def addToDB(comment):
-    db.session.add(comment)
+def addToDB(item):
+    db.session.add(item)
     db.session.commit()

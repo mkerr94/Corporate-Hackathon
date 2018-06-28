@@ -25,7 +25,7 @@
       <img class="post-downvote-arrow" src={{ url_for('static', filename='images/down_arrow.svg') }} alt="downvote arrow">
       <!-- post.votes -->
       <span class="post-votes">278 votes</span>
-      <p class="post-view"><a href='{{ url_for('post') }}'>View</a></p>
+      <p class="post-view"><a href='{{ url_for('.post') }}'>View</a></p>
       <form method="GET" style='visibility:hidden' class='comment-form'>
         <input type="text" placeholder="Please enter a comment here" id='comment'></input>
         <input type="submit" value="Submit"></input>
