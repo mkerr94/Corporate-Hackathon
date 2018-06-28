@@ -1,12 +1,14 @@
+from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
 from flask import render_template, request, redirect
 import datetime
-import Post
+from Model.post import Post
+from Model.vote import Vote
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://sql2245027:hR8*eV4!@sql2.freemysqlhosting.net/sql2245027'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://sql2245027:hR8*eV4!@sql2.freemysqlhosting.net/sql2245027'
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
