@@ -1,0 +1,81 @@
+body {
+    margin: 0px;
+    font-family: Roboto;
+}
+
+.web-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+     ". . . login"
+     ". posts posts ."
+     "footer footer footer footer";
+}
+
+.header {
+    grid-column: 1 / 5;
+    grid-row: 1;
+
+    background-color: #D42F2F;
+}
+
+.login {
+    grid-area: login;
+}
+
+.posts {
+  padding: 5%;
+  grid-area: posts;
+}
+
+.divider{
+  width: 30vw;
+  border: 0;
+  height: 1px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  background: #000;
+  opacity: 0.4;
+}
+
+.post-container{
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-top: 0.5%;
+  padding-bottom: 0.5%;
+  border-radius: 8px;
+  border: 1px solid;
+  border-color: #D42F2F;
+}
+
+.post-title{
+  font-size: 1.5em;
+  font-family: Roboto-Light;
+}
+
+.post-author{
+  font-size: 1em;
+  color: #D42F2F;
+  font-weight: lighter;
+}
+
+.post-description{
+  font-family: Roboto-Light;
+}
+
+.post-view{
+  font-family: Roboto-Italic;
+}
+
+.post-view a{
+  color: #D42F2F;
+  text-decoration: none;
+}
+
+.post-votes {
+  margin-left: 5%;
+  font-family: Roboto-Light;
+  font-size: 0.8em;
+  color: #D42F2F;
+}
