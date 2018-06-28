@@ -85,4 +85,26 @@
     border: 1px solid var(--main-bg-color);;
     border-radius: var(--border-radius);
 
+    z-index: 1;
+}
+
+@media screen and (max-width: 800px) {
+    .categories {
+        max-width: 200px;
+        height: 101%;
+        margin: 0px;
+
+        position: fixed;
+        top: 50%;
+        right: -1;
+        transform: translateY(-50%);
+
+        background-color: white;
+        background-image: url('../images/chevron-left.svg');
+        background-repeat: no-repeat;
+        background-position-y: 50%;
+        border-radius: 0px;
+
+        transition: 0.4s;
+    }
 }
