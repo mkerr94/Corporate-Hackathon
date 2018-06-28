@@ -64,6 +64,14 @@ def createPost():
     addToDB(post)
     return redirect(url_for('index'))
 
+@myModule.route('/postComment', methods = ['POST'])
+def postComment():
+    comment = Comment(user_id=request.form['user_id'],
+                post_id=request.form['post_id'],
+                vote=request.form['text'])
+    addToDB(comment)
+    return redirect(url_for('index'))
+
 @myModule.route('/vote', methods = ['POST'])
 def vote():
     vote = Vote(user_id=request.form['user_id'],
