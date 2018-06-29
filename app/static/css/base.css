@@ -49,6 +49,10 @@ body {
     color: white;
 }
 
+.login:link {
+    text-decoration: none;
+}
+
 /* Main content */
 .content {
     grid-area: content;

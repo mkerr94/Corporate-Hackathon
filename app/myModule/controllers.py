@@ -4,26 +4,33 @@ from app.myModule.models import Comment, Vote, Post, Category
 from app import db
 
 myModule = Blueprint('myModule', __name__)
-user = 'Test User'
+userlist = ["Bob Murray", "John Madden", "Sarah Kirkhope", "Geoff Freeman", "Jenny Hawlith", "Karina White"]
+user = 0
 
 @myModule.route('/')
 @myModule.route('/index')
 def index():
-    posts = Post.query.order_by(Post.upvotes - Post.downvotes).all()
+    posts = Post.query.order_by(Post.upvotes - Post.downvotes).limit(6).all()
     categories = Category.query.order_by(Category.id).limit(10).all()
-    # print("---------------" +str(posts))
-    return render_template('index.html.j2', title='Home', user=user, posts=posts, categories=categories)
+    return render_template('index.html.j2', title='Home', user=userlist[user], posts=posts, categories=categories)
 
 @myModule.route('/post')
 def post():
     id = request.args.get('id')
     post = Post.query.filter_by(id=id).first()
-    return render_template('post.html.j2', post=post)
-
+    return render_template('post.html.j2', user=userlist[user], post=post)
 
 @myModule.route('/create')
 def create():
-    return render_template('create_post.html.j2')
+    return render_template('create_post.html.j2', user=userlist[user])
+
+@myModule.route('/changeUser') # Super secret dev thing!
+def changeUser():
+    from random import randint
+    random_user = randint(0, len(userlist) - 1)
+    global user
+    user = random_user
+    return redirect(url_for('.index'))
 
 @myModule.route('/searchPost')
 def searchPost():
@@ -71,12 +78,26 @@ def searchByCategory():
 def createPost():
     post = Post(timestamp=datetime.datetime.now(),
                 title=request.form['title'],
-                author=user,
+                author=userlist[user],
                 description=request.form['description'],
                 upvotes=0,
                 downvotes=0)
     addToDB(post)
+
+    cat_list = parseCategories(request.form['categories'])
+    for cat in cat_list:
+        category = Category(name=cat,
+                            post_id=post.id)
+        addToDB(category)
+
     return redirect(url_for('.index'))
+
+def parseCategories(list_string):
+    # Assume proper input validation is accomplished.
+    cat_list = list_string.split(',')
+    for i in range(0, len(cat_list)):
+        cat_list[i] = cat_list[i].strip() # Trim whitespaces
+    return cat_list
 
 @myModule.route('/postComment', methods = ['POST'])
 def postComment():

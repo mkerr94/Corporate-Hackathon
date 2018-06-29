@@ -12,7 +12,7 @@
 
       <a class='logo' href={{ url_for('.index') }}><img class='logo-image' src={{ url_for('static', filename='images/logo.png') }}></a>
 
-      <p class='login'>Welcome, {{ user }}</p>
+      <a class='login' href={{ url_for('.changeUser') }}>Welcome, {{ user }}</a>
 
       {% block content %}{% endblock %}
 

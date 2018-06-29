@@ -1,22 +1,22 @@
 {% extends "layout/base.html.j2" %}
 
-{% block head %}
-<link rel='stylesheet' type='text/css' href='../../static/css/create-post.css'>
-<script src='../static/js/like.js'></script>
+{% block header %}
+<link rel='stylesheet' type='text/css' href={{ url_for('static', filename='css/create-post.css') }}>
 {% endblock %}
 
 {% block content %}
 
 <div class='content'>
-  <form action='createPost' method='post'>
+  <center><h3 style='color:#888888'>Suggest a new idea</h3></center>
 
-    Title:<br>
-    <input type="text" name="title"><br>
-    Category:<br>
-    <input type="text" name="category"><br>
-    Description:<br>
-    <textarea cols="40" rows="5" name='description'></textarea><br>
-    <input type=submit text='Submit'>
+  <form action='createPost' method='post'>
+    Name of your idea:<br>
+    <input type="text" name="title" style='width:100%;' required><br>
+    Categories:<br>
+    <input type="text" name="categories" style='width:100%;' required><br>
+    What's your idea?:<br>
+    <textarea cols="40" rows="5" name='description' style='width:100%;' required></textarea><br>
+    <button class='submit'>Submit</button>
   </form>
 </div>
 

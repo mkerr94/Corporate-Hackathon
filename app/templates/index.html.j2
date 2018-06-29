@@ -41,18 +41,11 @@
     <div class='filters'> <!-- For hiding -->
       <input class='search' id='cat' type='text' name='search'>
       <div class='categories'>
-        <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id1' }} />{{ 'Innovote' }}</label>
-        <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id2' }} />{{ 'MyTecHUB' }}</label>
-        <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id3' }} />{{ 'Request Centre' }}</label>
-        <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id4' }} />{{ 'Learning Centre' }}</label>
-        <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id5' }} />{{ 'Developer Xchange' }}</label>
-        <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id6' }} />{{ 'Bournemouth' }}</label>
-        <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id7' }} />{{ 'JPMC Marketplace' }}</label>
-        <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id8' }} />{{ 'Blueberry Suit' }}</label>
-        <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id9' }} />{{ 'Cassandra' }}</label>
-        <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id0' }} />{{ 'Pizza Hut' }}</label>
+        {% for category in categories %}
+        <label><input class='category-checkbox' type='checkbox' name={{ category.id }} />{{ category.name }}</label>
+        {% endfor %}
       </div>
-      <button class='submit'>
+      <button class='submit'>Submit</button>
     </div>
   </div>
 

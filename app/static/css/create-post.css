@@ -1,3 +1,10 @@
-:root {
-    --main-bg-color: #759eb8;
+.submit {
+    margin-top: 4px;
+    float: right;
+
+    background-color: var(--accept-color);
+    border: none;
+    padding: 10px;
+
+    color: white;
 }

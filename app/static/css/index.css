@@ -152,6 +152,7 @@ label {
         "search"
         "categories"
         "submit";
+    grid-gap: 10px;
 
     height: 100%;
 }
@@ -169,7 +170,6 @@ label {
     grid-area: categories;
 
     height: 100%;
-    margin-top: 10px;
 
     overflow-y: scroll;
 }
@@ -194,6 +194,8 @@ label {
 
     background-color: var(--accept-color);
     border: none;
+
+    color: white;
 }
 
 @media screen and (max-width: 800px) {
