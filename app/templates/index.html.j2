@@ -3,6 +3,7 @@
   <link rel='stylesheet' type='text/css' href={{ url_for('static', filename='css/index.css') }}>
   <script src={{ url_for('static', filename='js/like.js') }}></script>
   <script src={{ url_for('static', filename='js/categories.js') }}></script>
+  <script src={{ url_for('static', filename='js/category-search.js') }}></script>
 {% endblock %}
 
 {% block content %}
@@ -50,35 +51,25 @@
   <div class='sidebar'>
     <button class='show-button'></button>
     <div class='filters'> <!-- For hiding -->
-      <input class='search' id='cat' type='text' name='search'>
+      <input class='search' id='cat-search' type='text' name='search'>
       <div class='categories'>
         {% for category in categories %}
-        <label><input class='category-checkbox' type='checkbox' name={{ category.id }} />{{ category.name }}</label>
+        <label><input class='category-checkbox' type='checkbox' {% if allchecked is defined%}checked=true{% endif %} name={{ category.id }}>{{ category.name }}</label>
         {% endfor %}
       </div>
-      <button class='submit'>Submit</button>
+      <button class='submit' onclick='filter();'>Submit</button>
     </div>
   </div>
 
+  <script>
+    function filter() {
+      categories = [];
+      $('.category-checkbox').each(function() {
+        if (this.checked) categories.push(this.name);
+      })
 
-    <!--
-
-
-    <div class='search-queries'>
-      <form class='categories-form'>
-      </form>
-      <input class='search' type='text' name='search' style='width:90%; height:20px; display:block; margin:6px auto;'>
-      <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id1' }} />{{ 'Innovote' }}</label>
-      <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id2' }} />{{ 'MyTecHUB' }}</label>
-      <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id3' }} />{{ 'Request Centre' }}</label>
-      <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id4' }} />{{ 'Learning Centre' }}</label>
-      <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id5' }} />{{ 'Developer Xchange' }}</label>
-      <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id6' }} />{{ 'Bournemouth' }}</label>
-      <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id7' }} />{{ 'JPMC Marketplace' }}</label>
-      <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id8' }} />{{ 'Blueberry Suit' }}</label>
-      <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id9' }} />{{ 'Cassandra' }}</label>
-      <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id0' }} />{{ 'Pizza Hut' }}</label>
-    </div> -->
-     <!-- categories -->
+      window.location.href='/searchByCategory?keyword=' + categories.toString();
+    }
+  </script>
 
 {% endblock %}

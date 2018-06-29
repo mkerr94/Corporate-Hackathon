@@ -28,6 +28,14 @@
   color: grey;
 }
 
+.post-upvote-arrow {
+  cursor: pointer;
+}
+
+.post-downvote-arrow {
+  cursor: pointer;
+}
+
 .divider{
   width: 30vw;
   border: 0;

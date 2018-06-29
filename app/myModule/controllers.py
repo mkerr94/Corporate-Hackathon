@@ -14,7 +14,6 @@ def index():
     categories = Category.query.order_by(Category.id).limit(10).all()
 
     for post in posts:
-        print(post)
         post.categories = Category.query.filter_by(post_id=post.id).all()
 
     return render_template('index.html.j2', title='Home', user=user, posts=posts, categories=categories)
@@ -70,8 +69,12 @@ def searchCategory():
             .replace('?', '_')
     else:
         looking_for = '%{0}%'.format(keyword)
-    categories = Post.query.filter(Post.title.ilike(looking_for)).all()
-    return categories
+    categories = Category.query.filter(Category.name.ilike(looking_for)).all()
+    cat_str = []
+    for category in categories:
+        cat_str.append({"id": category.id, "name": category.name})
+    
+    return jsonify({"categories": cat_str})
 
 @myModule.route('/searchByCategory')
 def searchByCategory():
@@ -79,13 +82,16 @@ def searchByCategory():
     categories = categories.split(",")
     posts_ids = []
     for c in categories:
-        posts_ids += Category.query.filter_by(name=c).all()
+        posts_ids += Category.query.filter_by(id=c).all()
 
     posts = []
     for id in posts_ids:
-        posts += Post.query.filter_by(id=id).all()
+        posts += Post.query.filter_by(id=id.post_id).all()
 
-    return posts
+    for post in posts:
+        post.categories = Category.query.filter_by(post_id=post.id).all()
+
+    return render_template('index.html.j2', title='Home', user=user, posts=posts, categories=posts_ids, allchecked=True)
 
 
 @myModule.route('/createPost', methods = ['POST'])

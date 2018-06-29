@@ -105,13 +105,24 @@ label {
     color: var(--main-bg-color);
 }
 
+.post-upvote-arrow {
+    cursor: pointer;
+}
+  
+.post-downvote-arrow {
+    cursor: pointer;
+}
+
 .sidebar {
     grid-area: aside;
     justify-self: center;
 
+    display: inline-block;
+
     width: 80%;
     min-width: 200px;
-    height: auto;
+    height: 100%;
+    max-height: 80vh;
     margin-top: 10px;
 
     position: -webkit-sticky; /* Safari */
@@ -161,19 +172,19 @@ label {
     height: 100%;
 }
 
-#cat {
+#cat-search {
     grid-area: search;
     justify-self: center;
 
     width: 90%;
-    height: 20px;
+    height: 24px;
     margin-top: 10px;
 }
 
 .categories {
     grid-area: categories;
 
-    height: 100%;
+    height: auto;
 
     overflow-y: scroll;
 }
@@ -200,6 +211,8 @@ label {
     border: none;
 
     color: white;
+
+    cursor: pointer;
 }
 
 @media screen and (max-width: 800px) {
