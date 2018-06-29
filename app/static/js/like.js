@@ -4,21 +4,19 @@ $(document).ready(function(){
     $('.post-upvote-arrow').click(function(){
         post_id = $(this).parent().attr('id');
 
-        $(this).parent().find('span')[0].innerHTML = parseInt($(this).parent().find('span')[0].innerHTML) + 1;
-
-        $.post('/vote', {'post_id':post_id, 'user_id':user, 'vote_type':1})
+        var context=this;
+        $.post('/vote', {'post_id':post_id, 'user_id':user, 'vote_type':1}, function(data) {
+            $(context).parent().find('span')[0].innerHTML = parseInt($(context).parent().find('span')[0].innerHTML) + data.result + " votes";
+        });
     })
 
     $('.post-downvote-arrow').click(function(){
         post_id = $(this).parent().attr('id');
 
-        // Display the comments form
-        comment_form_id = 'comment_form_'+post_id;
-        $(this).parent().find('form')[0].style.visibility = 'visible';
-
-        $(this).parent().find('span')[0].innerHTML = parseInt($(this).parent().find('span')[0].innerHTML) - 1;
-
-        $.post('/vote', {'post_id':post_id, 'user_id':user, 'vote_type':0})
+        var context=this;
+        $.post('/vote', {'post_id':post_id, 'user_id':user, 'vote_type':0}, function(data) {
+            $(context).parent().find('span')[0].innerHTML = parseInt($(context).parent().find('span')[0].innerHTML) - data.result + " votes";
+        });
     })
 
     $('.comment-form').submit(function(event){

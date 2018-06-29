@@ -10,49 +10,71 @@
 
 
   <div class='content'>
-    <form action='searchPost' method='get'>
-      <input class='search' type='text' name='keyword' placeholder='Search for ideas...'>
-      <input type="submit" style="position: absolute; left: -9999px"/>
-    </form>
+    <div class='search-create'>
+      <form action='searchPost' method='get' style='margin: 0px;'>
+        <input class='search' type='text' name='keyword' placeholder='Search for ideas...'>
+        <input type="submit" style="position: absolute; left: -9999px"/>
+      </form>
+      <a class='create' href={{ url_for('.create') }}><button class='create-button'></button></a>
+    </div>
 
     {% for p in posts %}
-    <div class="post-container">
+    <div class="post-container" id="{{ p.id }}">
       <!-- post.title -->
       <p class="post-title">{{ p.title }}</p>
       <!-- post.author -->
-      <h4 class="post-author">@Author</h4>
+      <h4 class="post-author">{{ p.author }}</h4>
       <!-- post.description -->
       <p class="post-description">{{ p.description }}</p>
       <!-- voting arrows -->
       <img class="post-upvote-arrow" src={{ url_for('static', filename='images/up_arrow.svg') }} alt="upvote arrow">
       <img class="post-downvote-arrow" src={{ url_for('static', filename='images/down_arrow.svg') }} alt="downvote arrow">
       <!-- post.votes -->
-      <span class="post-votes">278 votes</span>
+      <span class="post-votes">{{ p.upvotes - p.downvotes }} votes</span>
       <p class="post-view"><a href={{ url_for('.post') ~ '?id=' ~ p.id }}>View</a></p>
-      <form method="GET" style='visibility:hidden' class='comment-form'>
-        <input type="text" placeholder="Please enter a comment here" id='comment'></input>
-        <input type="submit" value="Submit"></input>
-      </form>
     </div> <!-- post-container -->
     {% endfor %}    
   </div> <!-- posts -->
 
-  <div class='categories'>
+  <div class='sidebar'>
     <button class='show-button'></button>
-    <form>
-      <input class='search' type='text' name='search' style='height:20px;'>
-      <input type='checkbox' name={{ 'cat_id1' }}><label for={{ 'cat_id1' }}>{{ 'Innovote' }}</label><br/>
-      <input type='checkbox' name={{ 'cat_id2' }}><label for={{ 'cat_id2' }}>{{ 'MyTecHUB' }}</label><br/>
-      <input type='checkbox' name={{ 'cat_id3' }}><label for={{ 'cat_id3' }}>{{ 'Request Centre' }}</label><br/>
-      <input type='checkbox' name={{ 'cat_id4' }}><label for={{ 'cat_id4' }}>{{ 'Learning Centre' }}</label><br/>
-      <input type='checkbox' name={{ 'cat_id5' }}><label for={{ 'cat_id5' }}>{{ 'Developer Xchange' }}</label><br/>
-      <input type='checkbox' name={{ 'cat_id6' }}><label for={{ 'cat_id6' }}>{{ 'Bournemouth' }}</label><br/>
-      <input type='checkbox' name={{ 'cat_id7' }}><label for={{ 'cat_id7' }}>{{ 'JPMC Marketplace' }}</label><br/>
-      <input type='checkbox' name={{ 'cat_id8' }}><label for={{ 'cat_id8' }}>{{ 'Blueberry Suit' }}</label><br/>
-      <input type='checkbox' name={{ 'cat_id9' }}><label for={{ 'cat_id9' }}>{{ 'Cassandra' }}</label><br/>
-      <input type='checkbox' name={{ 'cat_id0' }}><label for={{ 'cat_id0' }}>{{ 'Pizza Hut' }}</label><br/>
-    </form>
+    <div class='filters'> <!-- For hiding -->
+      <input class='search' id='cat' type='text' name='search'>
+      <div class='categories'>
+        <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id1' }} />{{ 'Innovote' }}</label>
+        <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id2' }} />{{ 'MyTecHUB' }}</label>
+        <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id3' }} />{{ 'Request Centre' }}</label>
+        <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id4' }} />{{ 'Learning Centre' }}</label>
+        <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id5' }} />{{ 'Developer Xchange' }}</label>
+        <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id6' }} />{{ 'Bournemouth' }}</label>
+        <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id7' }} />{{ 'JPMC Marketplace' }}</label>
+        <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id8' }} />{{ 'Blueberry Suit' }}</label>
+        <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id9' }} />{{ 'Cassandra' }}</label>
+        <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id0' }} />{{ 'Pizza Hut' }}</label>
+      </div>
+      <button class='submit'>
+    </div>
+  </div>
 
-  </div> <!-- categories -->
+
+    <!--
+
+
+    <div class='search-queries'>
+      <form class='categories-form'>
+      </form>
+      <input class='search' type='text' name='search' style='width:90%; height:20px; display:block; margin:6px auto;'>
+      <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id1' }} />{{ 'Innovote' }}</label>
+      <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id2' }} />{{ 'MyTecHUB' }}</label>
+      <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id3' }} />{{ 'Request Centre' }}</label>
+      <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id4' }} />{{ 'Learning Centre' }}</label>
+      <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id5' }} />{{ 'Developer Xchange' }}</label>
+      <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id6' }} />{{ 'Bournemouth' }}</label>
+      <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id7' }} />{{ 'JPMC Marketplace' }}</label>
+      <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id8' }} />{{ 'Blueberry Suit' }}</label>
+      <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id9' }} />{{ 'Cassandra' }}</label>
+      <label><input class='category-checkbox' type='checkbox' name={{ 'cat_id0' }} />{{ 'Pizza Hut' }}</label>
+    </div> -->
+     <!-- categories -->
 
 {% endblock %}

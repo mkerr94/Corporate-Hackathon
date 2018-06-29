@@ -6,6 +6,7 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     timestamp = db.Column(db.Date())
     title = db.Column(db.String(500))
+    author = db.Column(db.String(500))
     description = db.Column(db.String(1000))
     upvotes = db.Column(db.Integer)
     downvotes = db.Column(db.Integer)

@@ -3,12 +3,14 @@ var shown = false;
 $(document).ready(function(){
     $(".show-button").click(function() {
         if (!shown) {
-            $(".categories").css({"max-width": "200px", "height": "101%"});
+            $(".sidebar").css({"max-width": "200px", "height": "101%"});
             $(".show-button").css("background-image", "url('../static/images/chevron-right.svg'");
+            $(".filters").css({"display": "grid"});
         }
         else {
-            $(".categories").css({"max-width": "", "height": ""});
+            $(".sidebar").css({"max-width": "", "height": ""});
             $(".show-button").css("background-image", "");
+            $(".filters").css({"display": ""});
         }
         shown = !shown;
     })

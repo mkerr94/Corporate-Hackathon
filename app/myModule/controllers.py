@@ -1,10 +1,10 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, jsonify
 import datetime
 from app.myModule.models import Comment, Vote, Post, Category
 from app import db
 
 myModule = Blueprint('myModule', __name__)
-user = {'username': 'Test User'}
+user = 'Test User'
 
 @myModule.route('/')
 @myModule.route('/index')
@@ -71,6 +71,7 @@ def searchByCategory():
 def createPost():
     post = Post(timestamp=datetime.datetime.now(),
                 title=request.form['title'],
+                author=user,
                 description=request.form['description'],
                 upvotes=0,
                 downvotes=0)
@@ -87,16 +88,52 @@ def postComment():
 
 @myModule.route('/vote', methods = ['POST'])
 def vote():
-    vote = Vote(user_id=request.form['user_id'],
-                post_id=request.form['post_id'],
-                vote=request.form['vote'])
-    post = Post.query.filter_by(id=request.form['post_id']).first()
-    if vote:
-        post.upvote += 1
-    else:
-        post.downvote += 1
-    addToDB(vote)
+    user_id=request.form['user_id']
+    post_id=request.form['post_id']
+    vote_type=request.form['vote_type']
+    query = Vote.query.filter((Vote.user_id == user_id) & (Vote.post_id == post_id))
+    existing_vote = query.first()
 
+    post = Post.query.filter_by(id=request.form['post_id']).first()
+    if (post is None): raise Exception("Somehow, the id couldn't be found.")
+
+    json = None
+
+    if (existing_vote is None):
+        # The user voted on this post for the first time.
+        vote = Vote(user_id=user_id,
+                    post_id=post_id,
+                    text=vote_type)
+        if (int(vote_type) != 0):
+            post.upvotes += 1
+        else:
+            post.downvotes += 1
+        addToDB(vote)
+        result = 1
+    else:
+        # The user had already voted on this post.
+        if (existing_vote.text == vote_type): # Tried to repeat an action.
+            if (int(vote_type) != 0):
+                post.upvotes -= 1
+            else:
+                post.downvotes -= 1
+            result = -1
+            query.delete()
+        else:
+            existing_vote.text = vote_type
+            if (int(vote_type) != 0):
+                post.upvotes += 1
+                post.downvotes -= 1
+            else:
+                post.upvotes -= 1
+                post.downvotes += 1
+            result = 2
+
+    print(post.upvotes)
+    print(post.downvotes)
+    
+    db.session.commit()
+    return jsonify(result=result)
 
 def addToDB(item):
     db.session.add(item)

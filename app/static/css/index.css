@@ -1,3 +1,8 @@
+label {
+    display: block;
+    text-indent: -10px;
+}
+
 .divider{
     width: 50%;
     border: 0;
@@ -6,6 +11,16 @@
     margin-bottom: 2%;
     background: #000;
     opacity: 0.4;
+}
+
+.search-create {
+    display: grid;
+    grid-template-columns: auto 44px;
+    grid-template-areas: "search create";
+    grid-gap: 5px;
+
+    margin-bottom: 1%;
+    margin-top: 1%;
 }
 
 .search {
@@ -20,10 +35,26 @@
     border-radius: 999px;
     padding: 10px;
     padding-left: 40px;
-    margin-bottom: 1%;
-    margin-top: 1%;
 
     font-size: 1em;
+}
+
+.create {
+    grid-area: create;
+}
+
+.create-button {
+    width: 44px;
+    height: 44px;
+
+    background-color: var(--accept-color);
+    background-image: url('../images/plus.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    border-radius: 999px;
+
+    cursor: pointer;
 }
 
 .post-container{
@@ -39,6 +70,7 @@
 .post-title{
     font-size: 1.5em;
     font-family: 'Roboto';
+    margin: 0px;
 }
 
 .post-author{
@@ -69,12 +101,13 @@
 
 
 
-.categories {
+.sidebar {
     grid-area: aside;
     justify-self: center;
 
     width: 80%;
-    height: 80vh;
+    min-width: 200px;
+    height: auto;
     margin-top: 10px;
 
     position: -webkit-sticky; /* Safari */
@@ -85,6 +118,8 @@
     border-radius: var(--border-radius);
 
     z-index: 1;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .show-button {
@@ -103,12 +138,68 @@
     padding: 0px;
 
     cursor: pointer;
-    visibility: hidden;
+    display: none;
+}
+
+.show-button:focus {
+    outline: none;
+}
+
+.filters {
+    display: grid;
+    grid-template-rows: 40px auto 40px;
+    grid-template-areas:
+        "search"
+        "categories"
+        "submit";
+
+    height: 100%;
+}
+
+#cat {
+    grid-area: search;
+    justify-self: center;
+
+    width: 90%;
+    height: 20px;
+    margin-top: 10px;
+}
+
+.categories {
+    grid-area: categories;
+
+    height: 100%;
+    margin-top: 10px;
+
+    overflow-y: scroll;
+}
+
+.category-checkbox {
+    width: 13px;
+    height: 13px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    margin-left: 20px;
+    margin-right: 5px;
+
+    padding: 0;
+    vertical-align: bottom;
+    position: relative;
+    top: 2px;
+    *overflow: hidden;
+}
+
+.submit {
+    grid-area: submit;
+
+    background-color: var(--accept-color);
+    border: none;
 }
 
 @media screen and (max-width: 800px) {
-    .categories {
+    .sidebar {
         max-width: 23px;
+        min-width: 0px;
         height: 10%;
         margin: 0px;
 
@@ -121,6 +212,17 @@
         border-radius: 0px;
 
         transition: 0.4s;
-        visibility: visible;
+    }
+
+    .show-button {
+        display: inline;
+    }
+
+    .filters {
+        display: none;
+    }
+
+    .category-checkbox {
+        margin-left: 30px;
     }
 }

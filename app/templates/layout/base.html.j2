@@ -10,15 +10,15 @@
 
       <div class='header'></div>
 
-      <img class='logo' src={{ url_for('static', filename='images/logo.png') }}>
+      <a class='logo' href={{ url_for('.index') }}><img class='logo-image' src={{ url_for('static', filename='images/logo.png') }}></a>
 
-      <p class='login'>Welcome, {% block username %}{% endblock %}</p>
+      <p class='login'>Welcome, {{ user }}</p>
 
       {% block content %}{% endblock %}
 
       <div class='footer'>
         <hr class='rule'/>
-        A webapp for a hackathon. Created by Ivan, Corina, Tatsuya, Cristian, Mark, Anais, and Marc.
+        A webapp for a hackathon. Created by Tatsuya, Ivan, Cristian, Mark, Corina, Marc, and Anais.
       </div>
     </div>
 
