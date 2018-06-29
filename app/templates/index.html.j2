@@ -1,7 +1,6 @@
 {% extends "layout/base.html.j2" %}
 {% block header %}
   <link rel='stylesheet' type='text/css' href={{ url_for('static', filename='css/index.css') }}>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src={{ url_for('static', filename='js/like.js') }}></script>
   <script src={{ url_for('static', filename='js/categories.js') }}></script>
 {% endblock %}
@@ -12,7 +11,7 @@
   <div class='content'>
     <div class='search-create'>
       <form action='searchPost' method='get' style='margin: 0px;'>
-        <input class='search' type='text' name='keyword' placeholder='Search for ideas...'>
+        <input class='search' type='text' name='keyword' autocomplete="off" placeholder='Search for ideas...'>
         <input type="submit" style="position: absolute; left: -9999px"/>
       </form>
       <a class='create' href={{ url_for('.create') }}><button class='create-button'></button></a>
@@ -30,8 +29,20 @@
       <img class="post-upvote-arrow" src={{ url_for('static', filename='images/up_arrow.svg') }} alt="upvote arrow">
       <img class="post-downvote-arrow" src={{ url_for('static', filename='images/down_arrow.svg') }} alt="downvote arrow">
       <!-- post.votes -->
-      <span class="post-votes">{{ p.upvotes - p.downvotes }} votes</span>
+      <span class="post-votes">{{ p.upvotes - p.downvotes }}</span><span class='post-votes-after'> votes</span>
       <p class="post-view"><a href={{ url_for('.post') ~ '?id=' ~ p.id }}>View</a></p>
+      <p>
+        {% if p.categories is defined %}
+        {% if p.categories|length == 1 %}
+        Category: {{ p.categories[0].name }}
+        {% else %}
+        Categories: 
+        {% for category in p.categories %}
+          {{ category.name }}, 
+        {% endfor %}
+        {% endif %}
+        {% endif %}
+      </p>
     </div> <!-- post-container -->
     {% endfor %}    
   </div> <!-- posts -->

@@ -2,29 +2,30 @@
     --main-bg-color: #759eb8;
 }
 
-.wrapper{
-  grid-area: content;
+.content {
+  margin: 0px 4px;
 }
 
 .post-title{
-  padding-top: 5%;
   font-size: 2em;
   border-top: 1px solid var(--main-bg-color);
   font-family: 'Roboto';
-
+  margin-top: 30px;
+  margin-bottom: 10px;
 }
 
 .post-author{
   font-family: 'Roboto';
   color: grey;
+  margin-top: 0px;
 }
 
-.post-score{
+.post-votes{
   color: grey;
 }
 
-.post-description{
-
+.post-votes-after{
+  color: grey;
 }
 
 .divider{
@@ -39,14 +40,16 @@
 
 .comments{
   border-top: 1px solid var(--main-bg-color);
-
-}
-.comments-container{
-
 }
 
 .comments-header{
   font-size: 2em;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.comment-text {
+  margin-bottom: 5px;
 }
 
 .comment-author{
@@ -59,4 +62,15 @@
   font-family: 'Roboto';
   color: grey;
   font-size: 0.7em;
+}
+
+.submit {
+  margin-top: 4px;
+  float: right;
+
+  background-color: var(--accept-color);
+  border: none;
+  padding: 10px;
+
+  color: white;
 }

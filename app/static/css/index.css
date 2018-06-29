@@ -99,7 +99,11 @@ label {
     color: var(--main-bg-color);
 }
 
-
+.post-votes-after {
+    font-family: 'Roboto';
+    font-size: 0.8em;
+    color: var(--main-bg-color);
+}
 
 .sidebar {
     grid-area: aside;

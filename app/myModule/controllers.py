@@ -5,31 +5,39 @@ from app import db
 
 myModule = Blueprint('myModule', __name__)
 userlist = ["Bob Murray", "John Madden", "Sarah Kirkhope", "Geoff Freeman", "Jenny Hawlith", "Karina White"]
-user = 0
+user = userlist[0]
 
 @myModule.route('/')
 @myModule.route('/index')
 def index():
-    posts = Post.query.order_by(Post.upvotes - Post.downvotes).limit(6).all()
+    posts = Post.query.order_by(Post.downvotes - Post.upvotes).limit(6).all()
     categories = Category.query.order_by(Category.id).limit(10).all()
-    return render_template('index.html.j2', title='Home', user=userlist[user], posts=posts, categories=categories)
+
+    for post in posts:
+        print(post)
+        post.categories = Category.query.filter_by(post_id=post.id).all()
+
+    return render_template('index.html.j2', title='Home', user=user, posts=posts, categories=categories)
 
 @myModule.route('/post')
 def post():
     id = request.args.get('id')
     post = Post.query.filter_by(id=id).first()
-    return render_template('post.html.j2', user=userlist[user], post=post)
+
+    from sqlalchemy import desc
+    comments = Comment.query.filter_by(post_id=id).all()
+    return render_template('post.html.j2', user=user, post=post, comments=list(reversed(comments)))
 
 @myModule.route('/create')
 def create():
-    return render_template('create_post.html.j2', user=userlist[user])
+    return render_template('create_post.html.j2', user=user)
 
 @myModule.route('/changeUser') # Super secret dev thing!
 def changeUser():
     from random import randint
     random_user = randint(0, len(userlist) - 1)
     global user
-    user = random_user
+    user = userlist[random_user]
     return redirect(url_for('.index'))
 
 @myModule.route('/searchPost')
@@ -45,7 +53,13 @@ def searchPost():
     posts += Post.query.filter(Post.title.ilike(looking_for)).all()
     posts += Post.query.filter(Post.description.ilike(looking_for)).all()
     posts = set(posts)
-    return render_template('index.html.j2', title='Home', user=user, posts=posts)
+
+    categories = Category.query.order_by(Category.id).limit(10).all()
+
+    for post in posts:
+        post.categories = Category.query.filter_by(post_id=post.id).all()
+
+    return render_template('index.html.j2', title='Home', user=user, posts=posts, categories=categories)
 
 @myModule.route('/searchCategory')
 def searchCategory():
@@ -78,7 +92,7 @@ def searchByCategory():
 def createPost():
     post = Post(timestamp=datetime.datetime.now(),
                 title=request.form['title'],
-                author=userlist[user],
+                author=user,
                 description=request.form['description'],
                 upvotes=0,
                 downvotes=0)
@@ -101,11 +115,13 @@ def parseCategories(list_string):
 
 @myModule.route('/postComment', methods = ['POST'])
 def postComment():
-    comment = Comment(user_id=request.form['user_id'],
-                post_id=request.form['post_id'],
-                vote=request.form['text'])
+    post_id=request.form['post_id']
+    comment = Comment(timestamp=datetime.datetime.now(),
+                post_id=post_id,
+                author=request.form['author'],
+                text=request.form['comment'])
     addToDB(comment)
-    return redirect(url_for('.index'))
+    return redirect(url_for('.post', id=post_id))
 
 @myModule.route('/vote', methods = ['POST'])
 def vote():
@@ -117,8 +133,6 @@ def vote():
 
     post = Post.query.filter_by(id=request.form['post_id']).first()
     if (post is None): raise Exception("Somehow, the id couldn't be found.")
-
-    json = None
 
     if (existing_vote is None):
         # The user voted on this post for the first time.
@@ -149,12 +163,9 @@ def vote():
                 post.upvotes -= 1
                 post.downvotes += 1
             result = 2
-
-    print(post.upvotes)
-    print(post.downvotes)
     
     db.session.commit()
-    return jsonify(result=result)
+    return jsonify({"upvotes": post.upvotes, "downvotes": post.downvotes})
 
 def addToDB(item):
     db.session.add(item)

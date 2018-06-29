@@ -1,45 +1,49 @@
 {% extends "layout/base.html.j2" %}
 
 {% block header %}
-  <link rel='stylesheet' type='text/css' href='../../static/css/view-post.css'>
-  <script src='../static/js/like.js'></script>
+  <link rel='stylesheet' type='text/css' href={{ url_for('static', filename='css/view-post.css') }}>
+  <script src={{ url_for('static', filename='js/like.js') }}></script>
 {% endblock %}
 
 {% block content %}
-<div class="wrapper">
-  <div class="post-container">
+<div class="content">
+  <div class="post-container" id="{{ post.id }}">
     <!-- post.title -->
     <p class="post-title">{{ post.title }}</p>
 
     <!-- post.author.name -->
-    <p class="post-author">@JPM Employee 59821</p>
+    <p class="post-author">{{ post.author }}</p>
 
     <!-- post.description -->
     <p class="post-description">{{ post.description }}</p>
 
-    <p class="post-score">Score: 430</p>
-    <img class="post-upvote-arrow" src="../static/images/up_arrow.svg" alt="upvote arrow">: 540
+    <span class="post-votes">{{ post.upvotes - post.downvotes }}</span><span class="post-votes-after"> votes</span><br>
+    <img class="post-upvote-arrow" src="../static/images/up_arrow.svg" alt="upvote arrow">: <span class='post-upvote-count'>{{ post.upvotes }}</span>
     <br>
-    <img class="post-downvote-arrow" src="../static/images/down_arrow.svg" alt="downvote arrow">: 110
+    <img class="post-downvote-arrow" src="../static/images/down_arrow.svg" alt="downvote arrow">: <span class='post-downvote-count'>{{ post.downvotes }}</span>
   </div>
 
 <br>
 
   <div class="comments">
     <p class="comments-header">Comments</p>
-    <!-- foreach post.comments -->
+    <form action='postComment' method='post'>
+      <input type='hidden' name='post_id' value={{ post.id }}>
+      <input type='hidden' name='author' value='{{ user }}'>
+      <textarea cols="40" rows="5" name='comment' style='width:100%;' required></textarea><br>
+      <button class='submit'>Submit</button>
+    </form>
+    {% if comments|length == 0 %}
+      <center>Looks like there aren't any... Be the first to comment!</center>
+    {% else %}
+    <p style='margin-bottom: 50px;'></p>
+    {% for comment in comments %}
     <div class="comments-container">
-      <p class="comment-text">this is a comment</p>
-      <span class="comment-author">N694821 |</span>  <span class="comment-timestamp">12:04pm</span>
+      <p class="comment-text">{{ comment.text }}</p>
+      <span class="comment-author">{{ comment.author }} |</span>  <span class="comment-timestamp">{{ comment.timestamp }}</span>
     </div>
-    <div class="comments-container">
-      <p class="comment-text">this is a comment</p>
-      <span class="comment-author">N739831 |</span>  <span class="comment-timestamp">06:44pm</span>
-    </div>
-    <div class="comments-container">
-      <p class="comment-text">this is a comment</p>
-      <span class="comment-author">P409403 |</span>  <span class="comment-timestamp">09:00am</span>
-    </div>
+    {% endfor %}
+    {% endif %}
   </div>
 </div>
 
